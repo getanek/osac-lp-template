@@ -1,0 +1,21 @@
+import type { Metadata } from "next";
+import { MarketPage } from "@/components/lp/MarketPage";
+import { getMarket } from "@/lib/lp/markets";
+import { VINCITORE } from "@/lib/lp/vincitore-wellness-estate";
+
+const market = getMarket(VINCITORE.slug, "ethiopia");
+
+export const metadata: Metadata = {
+  title: { absolute: "ቪንቺቶሬ ዌልነስ እስቴት — ማጃን፣ ዱባይ | OSAC Properties" },
+  description:
+    "በእያንዳንዱ ቤት ውስጥ የግል መዋኛ ገንዳ። ከ800,000 ድርሃም ጀምሮ ሙሉ ባለቤትነት። አማርኛ ከሚናገር በዱባይ ካለ አማካሪ ጋር ይነጋገሩ።",
+  alternates: {
+    canonical: `${market.path}/am`,
+    languages: { en: market.path, am: `${market.path}/am` },
+  },
+  robots: { index: false, follow: false },
+};
+
+export default function Page() {
+  return <MarketPage project={VINCITORE} marketId="ethiopia" lang="am" />;
+}
